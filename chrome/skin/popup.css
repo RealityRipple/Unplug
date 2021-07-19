@@ -1,0 +1,17 @@
+vbox#scroll
+{
+ overflow-y: auto;
+}
+vbox#listing spacer
+{
+ min-height: 0.5em;
+}
+label.title
+{
+ text-align: center;
+ font-size: 150%;
+}
+label.version
+{
+ text-align: right;
+}
