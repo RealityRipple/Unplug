@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://unplug/skin/newplugin.css"?>
+<!DOCTYPE page [
+<!ENTITY % brandDTD SYSTEM "chrome://branding/locale/brand.dtd" >
+%brandDTD;
+<!ENTITY % newPlugin SYSTEM "chrome://unplug/locale/newplugin.dtd">
+%newPlugin;
+<!ENTITY % extensionsDTD SYSTEM "chrome://mozapps/locale/extensions/extensions.dtd">
+%extensionsDTD;
+]>
+<page xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+      xmlns:xhtml="http://www.w3.org/1999/xhtml" title="&title;"
+      disablefastfind="true" id="plugin-page" onload="newplugin.initialize()"
+      onunload="newplugin.unload()" role="application" align="stretch" pack="stretch">
+ <xhtml:link rel="shortcut icon" style="display: none" href="chrome://mozapps/skin/plugins/pluginGeneric-16.png"/>
+  <script type="application/javascript" src="chrome://unplug/content/newplugin.js"/>
+
+  <scrollbox id="plugin-scrollbox" align="center">
+    <spacer id="spacer-start"/>
+
+    <vbox id="plugin-container" class="main-content">
+      <description>&intro;</description>
+
+      <hbox id="plugin-info">
+        <image id="icon"/>
+        <vbox flex="1">
+          <label id="name"/>
+          <label id="author"/>
+          <label id="location" crop="end"/>
+        </vbox>
+      </hbox>
+
+      <description id="description" flex="1" />
+
+      <hbox id="warning">
+        <image id="warning-icon"/>
+        <description flex="1">&warning;</description>
+      </hbox>
+
+      <radiogroup id="activation" orient="horizontal">
+        <radio id="activate_yes" label="&cmd.alwaysActivate.label;" tooltiptext="&cmd.alwaysActivate.tooltip;" value="2" />
+        <radio id="activate_ask" label="&cmd.askToActivate.label;" tooltiptext="&cmd.askToActivate.tooltip;" value="1" />
+        <radio id="activate_no" label="&cmd.neverActivate.label;" tooltiptext="&cmd.neverActivate.tooltip;" value="0" />
+      </radiogroup>
+
+      <description id="later">&later;</description>
+
+      <deck id="buttonDeck">
+        <hbox id="continuePanel">
+          <button id="continue-button" label="&continue;"
+                  oncommand="newplugin.continueClicked()"/>
+        </hbox>
+      </deck>
+    </vbox>
+
+    <spacer id="spacer-end"/>
+  </scrollbox>
+</page>

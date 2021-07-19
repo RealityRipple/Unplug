@@ -1,0 +1,85 @@
+@import url("chrome://global/skin/inContentUI.css");
+#plugin-page
+{
+ padding: 0;
+}
+#plugin-scrollbox
+{
+ overflow: auto;
+ -moz-box-orient: vertical;
+ -moz-box-flex: 1;
+}
+#spacer-start
+{
+ -moz-box-flex: 1;
+}
+#spacer-end
+{
+ -moz-box-flex: 3;
+}
+#plugin-container
+{
+ overflow: visible;
+ max-width: 600px;
+ margin: 20px;
+ padding: 30px 90px;
+}
+#plugin-info
+{
+ -moz-box-align: start;
+ margin: 25px 10px;
+}
+#icon
+{
+ -moz-margin-end: 10px;
+ max-width: 64px;
+ max-height: 64px;
+ list-style-image: url("chrome://mozapps/skin/plugins/pluginGeneric.png");
+}
+#name
+{
+ font-size: 130%;
+}
+#author
+{
+ color: GrayText;
+}
+#location
+{
+ color: GrayText;
+}
+#description
+{
+ margin-bottom: 25px;
+}
+#warning
+{
+ margin-bottom: 25px;
+ -moz-box-align: start;
+}
+#warning-icon
+{
+ list-style-image: url("chrome://mozapps/skin/extensions/alerticon-warning.png");
+ width: 16px;
+ height: 15px;
+ -moz-margin-end: 5px;
+}
+#activation
+{
+ -moz-margin-start: 84px;
+ margin-bottom: 20px;
+}
+#continuePanel
+{
+ margin-top: 25px;
+ -moz-box-pack: end;
+ -moz-box-align: center;
+}
+#continuePanel
+{
+ -moz-box-pack: end;
+}
+#later
+{
+ color: GrayText;
+}

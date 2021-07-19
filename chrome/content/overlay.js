@@ -1,4 +1,3 @@
-Components.utils.import('resource://unplug/activity.jsm');
 var unplug =
 {
  init: function()
@@ -8,8 +7,6 @@ var unplug =
  },
  check: function()
  {
-  if (unplug_activity.popup)
-   return;
   let pluginHost = Components.classes["@mozilla.org/plugin/host;1"].getService(Components.interfaces.nsIPluginHost);
   let pluginTags = pluginHost.getPluginTags();
   let newPlugins = [];
@@ -25,16 +22,34 @@ var unplug =
   }
   if (newPlugins.length === 0)
    return;
-  unplug_activity.popup = true;
-  unplug.showDialog(newPlugins);
+  for (let i = 0; i < newPlugins.length; i++)
+  {
+   unplug.showPage('chrome://unplug/content/newplugin.xul?id=' + newPlugins[i].niceName);
+  }
  },
- showDialog: function(newPlugins)
+ showPage: function(url)
  {
-  let pHeight = 180;
-  if (newPlugins.length > 1)
-   pHeight = 340;
-  window.openDialog('chrome://unplug/content/popup.xul', 'unplugPopup', 'chrome,dialog,resizable=no,scrollbars=no,top=120,left=120,innerWidth=480,innerHeight=' + pHeight + ',alwaysRaised', newPlugins);
-  unplug_activity.popup = false;
+  let mdtr = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator);
+  let brw = mdtr.getEnumerator('navigator:browser');
+  while (brw.hasMoreElements())
+  {
+   let wnd = brw.getNext();
+   let gw = wnd.gBrowser;
+   for (let i = 0; i < gw.browsers.length; i++)
+   {
+    let bri = gw.getBrowserAtIndex(i);
+    if (bri.currentURI.spec === url)
+     return;
+   }
+  }
+  let rwnd = mdtr.getMostRecentWindow('navigator:browser');
+  if (rwnd)
+  {
+   let nw = rwnd.gBrowser.addTab(url, null, null, null, null, null);
+   rwnd.gBrowser.selectedTab = nw;
+   return;
+  }
+  window.open(url);
  },
  getBoolPref: function(prefName, defVal)
  {
