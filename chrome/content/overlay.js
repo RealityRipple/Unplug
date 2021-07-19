@@ -4,6 +4,7 @@ var unplug =
  init: function()
  {
   window.setInterval(unplug.check, 10000);
+  window.setTimeout(unplug.check, 1000);
  },
  check: function()
  {
