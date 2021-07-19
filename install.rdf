@@ -3,7 +3,7 @@
  <Description about="urn:mozilla:install-manifest">
   <em:name>Unplug</em:name>
   <em:id>{13A88D2F-1B1F-5818-BC64-7F5877A60A37}</em:id>
-  <em:version>1.0</em:version>
+  <em:version>1.1</em:version>
   <em:type>2</em:type>
   <!-- Pale Moon -->
   <em:targetApplication>
