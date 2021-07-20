@@ -38,6 +38,16 @@ var newplugin =
    window.close()
    return;
   }
+  let prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
+  let prefPrompt = 'plugin.prompt.' + aPlugin.niceName;
+  if (prefs.prefHasUserValue(prefPrompt))
+  {
+   if (prefs.getBoolPref(prefPrompt))
+   {
+    window.close();
+    return;
+   }
+  }
   newplugin.gPlugin = aPlugin;
 
   let bundle = Services.strings.createBundle('chrome://mozapps/locale/extensions/newaddon.properties');
@@ -88,7 +98,6 @@ var newplugin =
   else
    document.getElementById('warning-text').hidden = true;
 
-  let prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
   prefs.addObserver('plugin.prompt.' + aPlugin.niceName, newplugin.prefObserver, false);
   let oDef = -1;
   if (prefs.prefHasUserValue('plugin.state.' + aPlugin.niceName))
