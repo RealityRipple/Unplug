@@ -1,5 +1,3 @@
-Components.utils.import('resource://gre/modules/Services.jsm');
-Components.utils.import('resource://gre/modules/AddonManager.jsm');
 var newplugin =
 {
  gPlugin: null,
@@ -50,7 +48,7 @@ var newplugin =
   }
   newplugin.gPlugin = aPlugin;
 
-  let bundle = Services.strings.createBundle('chrome://mozapps/locale/extensions/newaddon.properties');
+  let bundle = Components.classes['@mozilla.org/intl/stringbundle;1'].getService(Components.interfaces.nsIStringBundleService).createBundle('chrome://mozapps/locale/extensions/newaddon.properties');
   let name = bundle.formatStringFromName('name', [aPlugin.name, aPlugin.version], 2);
   document.getElementById('name').value = name;
   
