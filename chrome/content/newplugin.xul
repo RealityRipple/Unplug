@@ -35,7 +35,10 @@
 
       <hbox id="warning">
         <image id="warning-icon"/>
-        <description flex="1">&warning;</description>
+        <vbox>
+         <description flex="1">&warning;</description>
+         <description id="warning-text" flex="1" />
+        </vbox>
       </hbox>
 
       <radiogroup id="activation" orient="horizontal">

@@ -66,6 +66,28 @@ var newplugin =
   else
    document.getElementById('description').hidden = true;
 
+  let extBundle = Components.classes['@mozilla.org/intl/stringbundle;1'].getService(Components.interfaces.nsIStringBundleService).createBundle('chrome://mozapps/locale/extensions/extensions.properties');
+  let warn = null;
+  switch(aPlugin.blocklistState)
+  {
+   case 1:
+    warn = extBundle.formatStringFromName('details.notification.softblocked', [aPlugin.name], 1);
+    break;
+   case 3:
+    warn = extBundle.formatStringFromName('details.notification.outdated', [aPlugin.name], 1);
+    break;
+   case 4:
+    warn = extBundle.formatStringFromName('details.notification.vulnerableUpdatable', [aPlugin.name], 1);
+    break;
+   case 5:
+    warn = extBundle.formatStringFromName('details.notification.vulnerableNoUpdate', [aPlugin.name], 1);
+    break;
+  }
+  if (warn)
+   document.getElementById('warning-text').textContent = warn;
+  else
+   document.getElementById('warning-text').hidden = true;
+
   let prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
   prefs.addObserver('plugin.prompt.' + aPlugin.niceName, newplugin.prefObserver, false);
   let oDef = -1;
