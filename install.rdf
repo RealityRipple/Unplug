@@ -3,13 +3,13 @@
  <Description about="urn:mozilla:install-manifest">
   <em:name>Unplug</em:name>
   <em:id>{13A88D2F-1B1F-5818-BC64-7F5877A60A37}</em:id>
-  <em:version>31.0</em:version>
+  <em:version>32.0</em:version>
   <em:type>2</em:type>
   <em:targetApplication>
    <Description>
     <em:id>{8de7fcbb-c55c-4fbe-bfc5-fc555c87dbc4}</em:id>
-    <em:minVersion>31.0</em:minVersion>
-    <em:maxVersion>31.*</em:maxVersion>
+    <em:minVersion>32.0</em:minVersion>
+    <em:maxVersion>32.*</em:maxVersion>
    </Description>
   </em:targetApplication>
   <em:description>Show a prompt when a new plugin is installed.</em:description>
